@@ -1,0 +1,53 @@
+<footer class="border-t border-white/5 bg-graphite-950">
+  <div class="mx-auto flex max-w-6xl flex-col items-center gap-8 px-4 py-12 sm:px-6 md:flex-row md:justify-between lg:px-8">
+    <a routerLink="/" fragment="inicio" class="transition-all duration-300 hover:opacity-80">
+      <img src="assets/images/alkimyalabs-logo.png" alt="Alkimya Labs" class="h-5 w-auto" width="967" height="151" />
+    </a>
+
+    <ul class="flex flex-wrap justify-center gap-6">
+      @for (link of navLinks; track link.fragment) {
+        <li>
+          <a routerLink="/" [fragment]="link.fragment" class="text-sm text-graphite-400 transition-all duration-300 hover:text-primary-300">{{ link.label }}</a>
+        </li>
+      }
+    </ul>
+
+    <div class="flex items-center gap-3">
+      <a [href]="social.instagram.url" target="_blank" rel="noopener noreferrer"
+         [attr.aria-label]="'Instagram ' + social.instagram.handle"
+         class="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm text-graphite-300 transition-all duration-300 hover:border-primary-400/60 hover:text-primary-300">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+        </svg>
+        {{ social.instagram.handle }}
+      </a>
+      <a [href]="social.linkedin.url" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de Alkimya Labs"
+         class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-graphite-300 transition-all duration-300 hover:border-accent-400/60 hover:text-accent-400">
+        <svg class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4v11H3v-11zm6.5 0h3.8v1.5h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1v5.45h-4v-4.83c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.91h-4v-11z" />
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="border-t border-white/5">
+    <div class="mx-auto flex max-w-6xl flex-col items-center gap-3 px-4 py-6 text-sm sm:flex-row sm:justify-between sm:px-6 lg:px-8">
+      <p class="text-graphite-500">
+        Desarrollado por <span class="text-primary-300">Alkimya</span><span class="text-accent-400">Labs</span> · © {{ year }}
+      </p>
+      <nav aria-label="Enlaces legales">
+        <ul class="flex flex-wrap justify-center gap-6">
+          @for (link of legalLinks; track link.path) {
+            <li>
+              <a [routerLink]="link.path" class="text-graphite-400 underline-offset-4 transition-all duration-300 hover:text-accent-400 hover:underline">
+                {{ link.label }}
+              </a>
+            </li>
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>

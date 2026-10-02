@@ -1,0 +1,62 @@
+<section id="gaston" class="bg-white py-20 text-graphite-950 sm:py-28">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      <!-- Intro -->
+      <div class="text-center lg:text-left">
+        <img src="assets/images/gaston-logo.png" alt="GastON" width="1822" height="425"
+             class="mx-auto h-auto w-48 sm:w-56 lg:mx-0" />
+
+        <h2 class="mt-8 font-display text-3xl font-bold leading-tight text-primary-800 sm:text-4xl">
+          Conocé a GastON: <span class="text-accent-500">Tu amigo financiero en WhatsApp</span>
+        </h2>
+
+        <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-graphite-600 lg:mx-0">
+          El asistente inteligente de finanzas personales que vive en tu chat. Mandale mensajes de texto o notas de audio con tus gastos diarios y él procesa, categoriza y arma tus reportes al instante.
+        </p>
+
+        <a [href]="whatsappUrl" target="_blank" rel="noopener noreferrer"
+           class="mt-10 inline-flex w-full items-center justify-center rounded-full bg-accent-500 px-8 py-4 font-display text-base font-bold text-white shadow-xl shadow-accent-500/25 transition-all duration-300 hover:-translate-y-1 hover:bg-accent-600 hover:shadow-accent-500/40 sm:w-auto">
+          Probar Demo Gratis
+        </a>
+      </div>
+
+      <!-- Chat preview -->
+      <div class="relative mx-auto w-full max-w-sm" aria-label="Ejemplo de conversación con GastON">
+        <div class="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-primary-100 to-accent-100 blur-2xl" aria-hidden="true"></div>
+        <div class="relative overflow-hidden rounded-3xl border border-graphite-100 bg-graphite-50 shadow-2xl shadow-primary-900/10">
+          <div class="flex items-center gap-3 bg-primary-800 px-5 py-4 text-white">
+            <img src="assets/images/gaston-avatar.png" alt="" width="1472" height="1459"
+                 class="h-10 w-10 rounded-full bg-white p-0.5" />
+            <div>
+              <p class="font-display font-bold leading-tight">GastON</p>
+              <p class="text-xs text-accent-300">en línea</p>
+            </div>
+          </div>
+          <ul class="flex flex-col gap-3 p-5">
+            @for (message of chatPreview; track $index) {
+              <li class="max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-snug shadow-sm"
+                  [class]="message.from === 'user'
+                    ? 'self-end rounded-br-md bg-accent-100 text-graphite-900'
+                    : 'self-start rounded-bl-md bg-white text-graphite-800'">
+                {{ message.text }}
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <ul class="mt-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      @for (feature of features; track feature.title) {
+        <li class="group rounded-2xl border border-graphite-100 bg-white p-8 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-accent-300 hover:shadow-xl hover:shadow-accent-500/10 sm:last:col-span-2 lg:last:col-span-1">
+          <span class="flex h-14 w-14 items-center justify-center rounded-xl bg-primary-50 text-3xl transition-all duration-300 group-hover:bg-accent-50" aria-hidden="true">
+            {{ feature.icon }}
+          </span>
+          <h3 class="mt-6 font-display text-xl font-bold text-primary-800">{{ feature.title }}</h3>
+          <p class="mt-3 leading-relaxed text-graphite-600">{{ feature.description }}</p>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

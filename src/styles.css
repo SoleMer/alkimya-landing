@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-graphite-950 font-sans text-graphite-100 antialiased;
+  }
+
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+}
