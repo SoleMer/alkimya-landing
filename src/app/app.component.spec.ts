@@ -60,7 +60,8 @@ describe('AppComponent', () => {
     }
   });
 
-  it('should point the WhatsApp CTAs to the configured number', async () => {
+  // LANZAMIENTO: volver a `it` cuando se descomenten los CTAs de WhatsApp.
+  it.skip('should point the WhatsApp CTAs to the configured number', async () => {
     const page = await renderAt('/');
     expect(page.querySelectorAll(`a[href="${WHATSAPP_URL}"]`).length).toBeGreaterThanOrEqual(3);
   });

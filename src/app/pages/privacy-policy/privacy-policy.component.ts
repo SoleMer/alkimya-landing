@@ -26,7 +26,7 @@ export class PrivacyPolicyComponent {
     { id: 'confidencialidad', title: 'Confidencialidad y Compartición de Datos' },
     { id: 'cuentas-compartidas', title: 'Cuentas Compartidas' },
     { id: 'seguridad', title: 'Seguridad de los Datos' },
-    { id: 'retencion-y-eliminacion', title: 'Retención y Eliminación de Datos' },
+    { id: 'retencion-y-eliminacion', title: 'Retención y Eliminación de Datos (Tus Derechos ARCO)' },
     { id: 'cambios', title: 'Cambios en esta Política' },
     { id: 'contacto', title: 'Contacto' },
   ];
