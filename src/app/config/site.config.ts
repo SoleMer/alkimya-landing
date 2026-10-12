@@ -49,6 +49,11 @@ export interface LegalLinkGroup {
 
 export const LEGAL_LINK_GROUPS: LegalLinkGroup[] = [
   { brand: 'Alkimya Labs', links: [{ label: 'Política de Cookies', path: '/cookies' }] },
-  // LANZAMIENTO: sumar { label: 'Términos y Condiciones', path: '/gaston/terminos' } cuando exista la página.
-  { brand: 'GastON', links: [{ label: 'Política de Privacidad', path: '/gaston/privacidad' }] },
+  {
+    brand: 'GastON',
+    links: [
+      { label: 'Términos y Condiciones', path: '/gaston/terminos' },
+      { label: 'Política de Privacidad', path: '/gaston/privacidad' },
+    ],
+  },
 ];

@@ -41,6 +41,18 @@ export const routes: Routes = [
     },
   },
   {
+    path: 'gaston/terminos',
+    loadComponent: () => import('./pages/terms/terms.component').then((m) => m.TermsComponent),
+    title: 'Términos y Condiciones · GastON | Alkimya Labs',
+    data: {
+      seo: {
+        path: '/gaston/terminos',
+        description:
+          'Términos y condiciones de uso de GastON, el asistente de gastos por WhatsApp de Alkimya Labs: uso permitido, planes de suscripción y responsabilidades.',
+      } satisfies RouteSeo,
+    },
+  },
+  {
     path: 'cookies',
     loadComponent: () =>
       import('./pages/cookies-policy/cookies-policy.component').then((m) => m.CookiesPolicyComponent),

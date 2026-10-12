@@ -39,6 +39,15 @@ describe('AppComponent', () => {
     expect(page.querySelector('a[href="/"]')?.textContent).toContain('Volver al inicio');
   });
 
+  it('should render the GastON terms at /gaston/terminos, linked from the footer', async () => {
+    const page = await renderAt('/gaston/terminos');
+    expect(page.querySelector('h1')?.textContent).toContain('Términos y Condiciones');
+    expect(page.querySelectorAll('article section h2').length).toBe(7);
+    expect(page.querySelector('main a[href="/gaston/privacidad"]')).toBeTruthy();
+    expect(page.querySelector('footer a[href="/gaston/terminos"]')?.textContent).toContain('Términos y Condiciones');
+    expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://alkimyalabs.com.ar/gaston/terminos');
+  });
+
   it('should update title, description and canonical per route', async () => {
     await renderAt('/gaston/privacidad');
     expect(document.title).toContain('Política de Privacidad');

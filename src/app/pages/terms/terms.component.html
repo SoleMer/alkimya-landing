@@ -1,0 +1,110 @@
+<main class="relative overflow-hidden pb-20 pt-28 sm:pb-28 sm:pt-36">
+  <div class="pointer-events-none absolute -left-40 top-0 h-96 w-96 rounded-full bg-primary-500/15 blur-3xl" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <a routerLink="/"
+       class="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-graphite-300 transition-all duration-300 hover:-translate-x-0.5 hover:border-primary-400/60 hover:text-primary-300">
+      <span aria-hidden="true">←</span> Volver al inicio
+    </a>
+
+    <header class="mt-10 max-w-3xl">
+      <p class="font-display text-sm font-semibold uppercase tracking-[0.3em] text-accent-400">Legal</p>
+      <h1 class="mt-4 font-display text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+        Términos y Condiciones de Uso <span class="text-primary-300">- GastON</span>
+      </h1>
+      <p class="mt-4 text-sm text-graphite-400">
+        Última actualización: <time datetime="2026-10">{{ lastUpdated }}</time>
+      </p>
+      <p class="mt-6 text-lg leading-relaxed text-graphite-300">
+        Por favor, lea atentamente estos Términos y Condiciones ("Términos") antes de utilizar el servicio GastON (en
+        adelante, el "Servicio"), operado por Alkimya Labs (en adelante, "nosotros", "nuestro" o el "Proveedor").
+      </p>
+      <p class="mt-4 text-lg leading-relaxed text-graphite-300">
+        Al aceptar los presentes términos y condiciones usted queda vinculado por los mismos. Si no está de acuerdo con
+        alguna parte, no debe continuar la interacción con el Servicio.
+      </p>
+    </header>
+
+    <div class="mt-14 grid gap-12 lg:grid-cols-[16rem_1fr]">
+      <!-- Índice -->
+      <nav aria-label="Índice de los términos" class="lg:sticky lg:top-28 lg:self-start">
+        <p class="font-display text-sm font-bold text-white">Contenido</p>
+        <ol class="mt-4 space-y-1 border-l border-white/10 text-sm">
+          @for (section of sections; track section.id; let i = $index) {
+            <li>
+              <a routerLink="/gaston/terminos" [fragment]="section.id"
+                 class="-ml-px block border-l border-transparent py-1.5 pl-4 text-graphite-400 transition-all duration-300 hover:border-accent-400 hover:text-accent-300">
+                {{ i + 1 }}. {{ section.title }}
+              </a>
+            </li>
+          }
+        </ol>
+      </nav>
+
+      <!-- Contenido -->
+      <article class="max-w-3xl space-y-12 leading-relaxed text-graphite-300">
+        <section id="naturaleza-del-servicio">
+          <h2 class="font-display text-2xl font-bold text-white">1. Naturaleza del Servicio e Interfaz</h2>
+          <p class="mt-4">El Servicio es una aplicación que funciona e interactúa con el Usuario exclusivamente o principalmente a través de la plataforma de mensajería instantánea WhatsApp.</p>
+          <p class="mt-4">
+            <strong class="text-graphite-100">Terceros proveedores:</strong> Usted reconoce y acepta que el Servicio depende de la disponibilidad,
+            funcionamiento y políticas de Meta Platforms, Inc. (WhatsApp). No somos responsables por interrupciones del servicio causadas por
+            caídas de WhatsApp, bloqueos de su cuenta por parte de Meta o cambios en sus políticas de uso.
+          </p>
+        </section>
+
+        <section id="uso-permitido">
+          <h2 class="font-display text-2xl font-bold text-white">2. Uso Permitido y Reglas de Conducta</h2>
+          <p class="mt-4">Al interactuar con el Servicio por WhatsApp, el Usuario se compromete a:</p>
+          <ul class="mt-4 list-disc space-y-2 pl-6 marker:text-accent-400">
+            <li>No enviar mensajes con contenido ilegal, ofensivo, difamatorio, virus o software malicioso.</li>
+            <li>No utilizar herramientas automatizadas ajenas (como scripts o bots externos) para saturar o realizar ingeniería inversa sobre nuestro canal de atención.</li>
+            <li>No suplantar la identidad de otra persona al vincular un número de teléfono.</li>
+          </ul>
+        </section>
+
+        <section id="privacidad-y-datos">
+          <h2 class="font-display text-2xl font-bold text-white">3. Privacidad, Datos y Tratamiento de Mensajes</h2>
+          <ul class="mt-4 list-disc space-y-2 pl-6 marker:text-accent-400">
+            <li><strong class="text-graphite-100">Tratamiento de Datos:</strong> Para operar, el Servicio lee y procesa los mensajes de texto, audios, imágenes o archivos que usted envía al chat. Estos datos se procesan con la única finalidad de brindar la respuesta o funcionalidad solicitada.</li>
+            <li><strong class="text-graphite-100">Número de Teléfono:</strong> Su número de teléfono de WhatsApp actúa como su identificador único de cuenta.</li>
+            <li>
+              <strong class="text-graphite-100">Seguridad de Meta:</strong> La transmisión de los mensajes está sujeta al cifrado de extremo a extremo de
+              WhatsApp, pero una vez que el mensaje llega a nuestros servidores para ser procesado por la App, su tratamiento se rige por nuestra
+              <a routerLink="/gaston/privacidad" class="text-accent-300 underline underline-offset-4 transition-all duration-300 hover:text-accent-400">Política de Privacidad</a>.
+            </li>
+          </ul>
+        </section>
+
+        <section id="costos-y-tarifas">
+          <h2 class="font-display text-2xl font-bold text-white">4. Costos y Tarifas de Datos</h2>
+          <p class="mt-4">
+            <strong class="text-graphite-100">Operadora móvil:</strong> Nosotros no cobramos por los mensajes recibidos, pero usted es responsable de los
+            costos de tráfico de datos o planes de telefonía móvil que su operadora le exija para usar WhatsApp.
+          </p>
+          <p class="mt-4"><strong class="text-graphite-100">Planes de suscripción:</strong></p>
+          <ul class="mt-4 list-disc space-y-2 pl-6 marker:text-accent-400">
+            <li><strong class="text-graphite-100">Plan mensual:</strong> Usted se adhiere a la suscripción mensual a través de la plataforma de Mercado Pago y será debitada de su cuenta todos los meses en el mismo día numérico calendario.</li>
+            <li><strong class="text-graphite-100">Plan anual:</strong> Usted puede optar por abonar el año completo de servicio una única vez, también a través de Mercado Pago. En dicho caso su suscripción se considera vencida al cumplirse el año calendario de suscripción. La renovación en este caso no es automática, debiendo expresar su conformidad con la misma.</li>
+          </ul>
+        </section>
+
+        <section id="limitacion-de-responsabilidad">
+          <h2 class="font-display text-2xl font-bold text-white">5. Limitación de Responsabilidad</h2>
+          <p class="mt-4">El Servicio se proporciona "tal cual" y "según disponibilidad". No garantizamos que las respuestas automatizadas del chat sean 100% precisas, en tiempo real o libres de errores de interpretación.</p>
+          <p class="mt-4">No nos hacemos responsables por la pérdida de información que quede registrada únicamente en el historial de chat de su dispositivo móvil.</p>
+        </section>
+
+        <section id="modificaciones-y-suspension">
+          <h2 class="font-display text-2xl font-bold text-white">6. Modificaciones y Suspensión del Servicio</h2>
+          <p class="mt-4">Nos reservamos el derecho de modificar, pausar o dar por terminado el Servicio a través de WhatsApp en cualquier momento. Asimismo, podemos bloquear el acceso a números de teléfono que violen estos Términos o hagan un uso abusivo del sistema.</p>
+        </section>
+
+        <section id="ley-aplicable">
+          <h2 class="font-display text-2xl font-bold text-white">7. Ley Aplicable</h2>
+          <p class="mt-4">Estos Términos se rigen por el Código Civil y Comercial de la República Argentina y sus leyes complementarias y concordantes. Cualquier disputa se resolverá ante los tribunales competentes de dicha jurisdicción.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>
