@@ -1,7 +1,8 @@
 <footer class="border-t border-white/5 bg-graphite-950">
   <div class="mx-auto flex max-w-6xl flex-col items-center gap-8 px-4 py-12 sm:px-6 md:flex-row md:justify-between lg:px-8">
     <a routerLink="/" fragment="inicio" class="transition-all duration-300 hover:opacity-80">
-      <img src="assets/images/alkimyalabs-logo.png" alt="Alkimya Labs" class="h-5 w-auto" width="967" height="151" />
+      <img src="assets/images/alkimyalabs-logo.png" alt="Alkimya Labs - Alquimia tecnológica y desarrollo de software" class="h-5 w-auto" width="967" height="151"
+           loading="lazy" decoding="async" />
     </a>
 
     <ul class="flex flex-wrap justify-center gap-6">
@@ -38,12 +39,18 @@
         Desarrollado por <span class="text-primary-300">Alkimya</span><span class="text-accent-400">Labs</span> · © {{ year }}
       </p>
       <nav aria-label="Enlaces legales">
-        <ul class="flex flex-wrap justify-center gap-6">
-          @for (link of legalLinks; track link.path) {
-            <li>
-              <a [routerLink]="link.path" class="text-graphite-400 underline-offset-4 transition-all duration-300 hover:text-accent-400 hover:underline">
-                {{ link.label }}
-              </a>
+        <ul class="flex flex-col items-center gap-2 sm:items-end">
+          @for (group of legalGroups; track group.brand) {
+            <li class="flex flex-wrap justify-center gap-x-2">
+              <span class="text-graphite-500">{{ group.brand }}:</span>
+              @for (link of group.links; track link.path; let last = $last) {
+                <a [routerLink]="link.path" class="text-graphite-400 underline-offset-4 transition-all duration-300 hover:text-accent-400 hover:underline">
+                  {{ link.label }}
+                </a>
+                @if (!last) {
+                  <span class="text-graphite-600" aria-hidden="true">·</span>
+                }
+              }
             </li>
           }
         </ul>

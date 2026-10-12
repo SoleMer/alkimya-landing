@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { SOCIAL_LINKS, WHATSAPP_NUMBER } from '../../config/site.config';
+import { ContactEmailComponent } from '../../components/contact-email/contact-email.component';
 
 interface PolicySection {
   id: string;
@@ -9,15 +9,11 @@ interface PolicySection {
 
 @Component({
   selector: 'app-privacy-policy',
-  imports: [RouterLink],
+  imports: [RouterLink, ContactEmailComponent],
   templateUrl: './privacy-policy.component.html',
 })
 export class PrivacyPolicyComponent {
   protected readonly lastUpdated = 'Septiembre de 2026';
-  protected readonly instagram = SOCIAL_LINKS.instagram;
-  protected readonly whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    'Hola, quiero hacer una consulta sobre mis datos personales en GastON',
-  )}`;
 
   /** Índice de la política; los `id` deben coincidir con los de cada <section> del template. */
   protected readonly sections: PolicySection[] = [

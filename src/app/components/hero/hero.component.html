@@ -11,6 +11,9 @@
       </a>
 
       <h1 class="mt-6 font-display text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
+        <span class="mb-4 block text-sm font-semibold uppercase tracking-[0.3em] text-accent-400 sm:text-base">
+          Alkimya Labs · Alquimia tecnológica
+        </span>
         Software con alma.
         <span class="block bg-gradient-to-r from-primary-400 via-primary-300 to-accent-400 bg-clip-text text-transparent">
           Soluciones que liberan tu energía.
@@ -24,6 +27,8 @@
       <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
         <!-- LANZAMIENTO: descomentar el CTA de WhatsApp.
         <a [href]="whatsappUrl" target="_blank" rel="noopener noreferrer"
+           (click)="analytics.trackWhatsAppClick('hero')"
+           aria-label="Hablar con GastON en WhatsApp (se abre en una pestaña nueva)"
            class="inline-flex w-full items-center justify-center rounded-full bg-accent-400 px-8 py-4 font-display text-base font-bold text-graphite-950 shadow-xl shadow-accent-400/25 transition-all duration-300 hover:-translate-y-1 hover:bg-accent-300 hover:shadow-accent-400/40 sm:w-auto">
           Hablar con GastON en WhatsApp 📲
         </a>

@@ -1,16 +1,98 @@
 <!doctype html>
-<html lang="es">
+<html lang="es-AR">
 <head>
   <meta charset="utf-8">
-  <title>Alkimya Labs · Software con alma</title>
-  <meta name="description" content="Alkimya Labs: laboratorio de desarrollo de herramientas inteligentes. Conocé GastON, tu asistente de finanzas personales en WhatsApp.">
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SEO: valores de la home; en otras rutas los actualiza SeoService (src/app/seo/seo.service.ts). -->
+  <title>Control de Gastos por WhatsApp, sin Planillas | GastON</title>
+  <meta name="description" content="Registrá tus gastos mandando un mensaje de WhatsApp. GastON los ordena por categoría y te arma reportes, sin planillas de Excel ni apps. Creado por Alkimya Labs.">
+  <meta name="keywords" content="alkimya labs, alquimia tecnologica, gaston whatsapp, bot de gastos, finanzas personales whatsapp, registrar gastos whatsapp, software studio, control de gastos argentina">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://alkimyalabs.com.ar/">
+
+  <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Alkimya Labs">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:url" content="https://alkimyalabs.com.ar/">
+  <meta property="og:title" content="Control de Gastos por WhatsApp, sin Planillas | GastON">
+  <meta property="og:description" content="Registrá tus gastos mandando un mensaje de WhatsApp. GastON los ordena por categoría y te arma reportes, sin planillas de Excel ni apps. Creado por Alkimya Labs.">
+  <meta property="og:image" content="https://alkimyalabs.com.ar/assets/images/alkimyalabs-logo.png">
+  <meta property="og:image:width" content="967">
+  <meta property="og:image:height" content="151">
+  <meta property="og:image:alt" content="Alkimya Labs - Alquimia tecnológica y desarrollo de software">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Control de Gastos por WhatsApp, sin Planillas | GastON">
+  <meta name="twitter:description" content="Registrá tus gastos mandando un mensaje de WhatsApp. GastON los ordena por categoría y te arma reportes, sin planillas de Excel ni apps. Creado por Alkimya Labs.">
+  <meta name="twitter:image" content="https://alkimyalabs.com.ar/assets/images/alkimyalabs-logo.png">
+  <meta name="twitter:image:alt" content="Alkimya Labs - Alquimia tecnológica y desarrollo de software">
+
   <meta name="theme-color" content="#0c0f18">
   <link rel="icon" type="image/png" href="assets/images/alkimyalabs-isotipo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Google Analytics 4. Solo carga en el dominio de producción, así localhost y los previews de Vercel no
+       ensucian las métricas. Las page_view las envía AnalyticsService (src/app/analytics/analytics.service.ts). -->
+  <script>
+    if (location.hostname === 'alkimyalabs.com.ar') {
+      var gaScript = document.createElement('script');
+      gaScript.async = true;
+      gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-M239KJ2DS6';
+      document.head.appendChild(gaScript);
+    }
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M239KJ2DS6', { send_page_view: false });
+  </script>
+
+  <!-- Datos estructurados (schema.org) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://alkimyalabs.com.ar/#organization",
+        "name": "Alkimya Labs",
+        "alternateName": "AlkimyaLabs - Alquimia Tecnológica",
+        "description": "Laboratorio de software y alquimia tecnológica dedicado a crear herramientas inteligentes que reducen la carga mental.",
+        "url": "https://alkimyalabs.com.ar",
+        "logo": "https://alkimyalabs.com.ar/assets/images/alkimyalabs-logo.png",
+        "sameAs": [
+          "https://www.instagram.com/alkimyalabs",
+          "https://www.linkedin.com/company/alkimyalabs"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://alkimyalabs.com.ar/#website",
+        "name": "Alkimya Labs",
+        "url": "https://alkimyalabs.com.ar",
+        "inLanguage": "es-AR",
+        "publisher": { "@id": "https://alkimyalabs.com.ar/#organization" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://alkimyalabs.com.ar/#gaston",
+        "name": "GastON",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "WhatsApp, Web",
+        "description": "Asistente inteligente de finanzas personales por WhatsApp que registra gastos por mensaje de texto o notas de audio.",
+        "url": "https://alkimyalabs.com.ar/#gaston",
+        "image": "https://alkimyalabs.com.ar/assets/images/gaston-logo.png",
+        "inLanguage": "es-AR",
+        "publisher": { "@id": "https://alkimyalabs.com.ar/#organization" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <app-root></app-root>

@@ -1,3 +1,6 @@
+/** URL pública del sitio, sin "/" final. Se usa para canonical y Open Graph. */
+export const SITE_URL = 'https://alkimyalabs.com.ar';
+
 /**
  * Configuración central de la landing.
  * Reemplazá WHATSAPP_NUMBER por el número real de GastON (formato internacional, sin "+" ni espacios).
@@ -7,6 +10,8 @@ export const WHATSAPP_NUMBER = '5492494690364';
 export const WHATSAPP_MESSAGE = 'Hola GastON!';
 
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+
+export const CONTACT_EMAIL = 'alkimyalabs@gmail.com';
 
 export const SOCIAL_LINKS = {
   instagram: {
@@ -36,6 +41,14 @@ export interface LegalLink {
   path: string;
 }
 
-export const LEGAL_LINKS: LegalLink[] = [
-  { label: 'Política de Privacidad', path: '/privacidad' },
+/** Documentos legales agrupados por a qué aplican: el sitio web (Alkimya Labs) o el servicio (GastON). */
+export interface LegalLinkGroup {
+  brand: string;
+  links: LegalLink[];
+}
+
+export const LEGAL_LINK_GROUPS: LegalLinkGroup[] = [
+  { brand: 'Alkimya Labs', links: [{ label: 'Política de Cookies', path: '/cookies' }] },
+  // LANZAMIENTO: sumar { label: 'Términos y Condiciones', path: '/terminos' } cuando exista la página.
+  { brand: 'GastON', links: [{ label: 'Política de Privacidad', path: '/privacidad' }] },
 ];

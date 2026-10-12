@@ -1,0 +1,18 @@
+<p class="mt-4">
+  Correo electrónico: <a [href]="mailtoUrl()" class="font-semibold text-accent-300 underline-offset-4 transition-all duration-300 hover:text-accent-400 hover:underline">{{ email }}</a>
+</p>
+<div class="mt-6 flex flex-col gap-3 sm:flex-row">
+  <a [href]="gmailUrl()" target="_blank" rel="noopener noreferrer"
+     [attr.aria-label]="'Escribinos por Gmail a ' + email + ' (se abre en una pestaña nueva)'"
+     class="inline-flex items-center justify-center gap-2 rounded-full bg-accent-400 px-6 py-3 font-display font-bold text-graphite-950 transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-300">
+    <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path stroke-linecap="round" stroke-linejoin="round" d="m3 7 9 6 9-6" />
+    </svg>
+    Escribinos por Gmail
+  </a>
+  <a [href]="mailtoUrl()"
+     class="inline-flex items-center justify-center rounded-full border border-white/15 px-6 py-3 font-display font-semibold text-graphite-200 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary-400/60 hover:text-primary-300">
+    Usar otra app de correo
+  </a>
+</div>

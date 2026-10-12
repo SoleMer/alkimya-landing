@@ -1,6 +1,8 @@
+import { ApplicationRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { provideRouter, Router } from '@angular/router';
 import { AppComponent } from './app.component';
+import { COOKIE_NOTICE_STORAGE_KEY } from './components/cookie-notice/cookie-notice.component';
 import { routes } from './app.routes';
 import { WHATSAPP_URL } from './config/site.config';
 
@@ -37,6 +39,71 @@ describe('AppComponent', () => {
     expect(page.querySelector('a[href="/"]')?.textContent).toContain('Volver al inicio');
   });
 
+  it('should update title, description and canonical per route', async () => {
+    await renderAt('/privacidad');
+    expect(document.title).toContain('Política de Privacidad');
+    expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toContain('GastON');
+    expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://alkimyalabs.com.ar/privacidad');
+    expect(document.querySelector('meta[property="og:url"]')?.getAttribute('content')).toBe('https://alkimyalabs.com.ar/privacidad');
+
+    await renderAt('/');
+    expect(document.title).toBe('Control de Gastos por WhatsApp, sin Planillas | GastON');
+    expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://alkimyalabs.com.ar/');
+  });
+
+  it('should send one GA4 page_view per page, ignoring #fragment navigations', async () => {
+    const gtag = vi.fn();
+    (window as unknown as { gtag: unknown }).gtag = gtag;
+    try {
+      await renderAt('/');
+      await TestBed.inject(Router).navigate(['/'], { fragment: 'gaston' });
+      await TestBed.inject(Router).navigateByUrl('/privacidad');
+
+      const pageViews = gtag.mock.calls.filter(([, name]) => name === 'page_view');
+      expect(pageViews.map(([, , params]) => new URL(params.page_location).pathname)).toEqual(['/', '/privacidad']);
+      expect(pageViews[1][2].page_title).toContain('Política de Privacidad');
+    } finally {
+      delete (window as unknown as { gtag?: unknown }).gtag;
+    }
+  });
+
+  it('should render the cookies policy at /cookies, linked from the footer and the GastON privacy policy', async () => {
+    const page = await renderAt('/cookies');
+    expect(page.querySelector('h1')?.textContent).toContain('Política de Cookies');
+    expect(page.querySelector('footer a[href="/cookies"]')?.textContent).toContain('Política de Cookies');
+
+    const privacy = await renderAt('/privacidad');
+    expect(privacy.querySelector('main a[href="/cookies"]')).toBeTruthy();
+  });
+
+  it('should offer contact by email (Gmail and mailto) in both policies, without WhatsApp links', async () => {
+    for (const url of ['/privacidad', '/cookies']) {
+      const page = await renderAt(url);
+      const contact = page.querySelector('#contacto')!;
+      expect(contact.querySelector('a[href^="https://mail.google.com/mail/"][href*="to=alkimyalabs@gmail.com"]')).toBeTruthy();
+      expect(contact.querySelector('a[href^="mailto:alkimyalabs@gmail.com"]')).toBeTruthy();
+      expect(contact.querySelector('a[href*="wa.me"]')).toBeNull();
+    }
+  });
+
+  it('should show the cookie notice until it is dismissed', async () => {
+    localStorage.removeItem(COOKIE_NOTICE_STORAGE_KEY);
+    try {
+      const page = await renderAt('/');
+      const notice = () => page.querySelector('aside[aria-label="Aviso de cookies"]');
+      expect(notice()?.querySelector('a[href="/cookies"]')).toBeTruthy();
+
+      notice()!.querySelector('button')!.click();
+      await TestBed.inject(ApplicationRef).whenStable();
+      expect(notice()).toBeNull();
+
+      const nextVisit = await renderAt('/');
+      expect(nextVisit.querySelector('aside[aria-label="Aviso de cookies"]')).toBeNull();
+    } finally {
+      localStorage.removeItem(COOKIE_NOTICE_STORAGE_KEY);
+    }
+  });
+
   it('should redirect unknown paths to the landing', async () => {
     const page = await renderAt('/no-existe');
     expect(page.querySelector('h1')?.textContent).toContain('Software con alma.');
@@ -49,7 +116,7 @@ describe('AppComponent', () => {
   });
 
   it('should open every external link in a new tab safely', async () => {
-    for (const url of ['/', '/privacidad']) {
+    for (const url of ['/', '/privacidad', '/cookies']) {
       const page = await renderAt(url);
       const external = Array.from(page.querySelectorAll<HTMLAnchorElement>('a[href^="http"]'));
       expect(external.length).toBeGreaterThan(0);

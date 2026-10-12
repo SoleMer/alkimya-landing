@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AnalyticsService } from '../../analytics/analytics.service';
 import { WHATSAPP_URL } from '../../config/site.config';
 
 interface Feature {
@@ -17,6 +18,7 @@ interface ChatMessage {
   templateUrl: './gaston-section.component.html',
 })
 export class GastonSectionComponent {
+  protected readonly analytics = inject(AnalyticsService);
   protected readonly whatsappUrl = WHATSAPP_URL;
 
   protected readonly features: Feature[] = [

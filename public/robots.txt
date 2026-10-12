@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alkimyalabs.com.ar/sitemap.xml

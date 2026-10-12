@@ -3,7 +3,8 @@
     <div class="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
       <!-- Intro -->
       <div class="text-center lg:text-left">
-        <img src="assets/images/gaston-logo.png" alt="GastON" width="1822" height="425"
+        <img src="assets/images/gaston-logo.png" alt="GastON, asistente de gastos y finanzas personales por WhatsApp"
+             width="1822" height="425" loading="lazy" decoding="async"
              class="mx-auto h-auto w-48 sm:w-56 lg:mx-0" />
 
         <h2 class="mt-8 font-display text-3xl font-bold leading-tight text-primary-800 sm:text-4xl">
@@ -16,6 +17,8 @@
 
         <!-- LANZAMIENTO: reemplazar el "Muy pronto" por el CTA de WhatsApp comentado abajo.
         <a [href]="whatsappUrl" target="_blank" rel="noopener noreferrer"
+           (click)="analytics.trackWhatsAppClick('gaston')"
+           aria-label="Probar Gratis: GastON en WhatsApp (se abre en una pestaña nueva)"
            class="mt-10 inline-flex w-full items-center justify-center rounded-full bg-accent-500 px-8 py-4 font-display text-base font-bold text-white shadow-xl shadow-accent-500/25 transition-all duration-300 hover:-translate-y-1 hover:bg-accent-600 hover:shadow-accent-500/40 sm:w-auto">
           Probar Gratis
         </a>
@@ -30,7 +33,7 @@
         <div class="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br from-primary-100 to-accent-100 blur-2xl" aria-hidden="true"></div>
         <div class="relative overflow-hidden rounded-3xl border border-graphite-100 bg-graphite-50 shadow-2xl shadow-primary-900/10">
           <div class="flex items-center gap-3 bg-primary-800 px-5 py-4 text-white">
-            <img src="assets/images/gaston-avatar.png" alt="" width="1472" height="1459"
+            <img src="assets/images/gaston-avatar.png" alt="" width="1472" height="1459" loading="lazy" decoding="async"
                  class="h-10 w-10 rounded-full bg-white p-0.5" />
             <div>
               <p class="font-display font-bold leading-tight">GastON</p>

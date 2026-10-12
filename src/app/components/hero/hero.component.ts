@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { AnalyticsService } from '../../analytics/analytics.service';
 import { RouterLink } from '@angular/router';
 import { WHATSAPP_URL } from '../../config/site.config';
 
@@ -8,5 +9,6 @@ import { WHATSAPP_URL } from '../../config/site.config';
   templateUrl: './hero.component.html',
 })
 export class HeroComponent {
+  protected readonly analytics = inject(AnalyticsService);
   protected readonly whatsappUrl = WHATSAPP_URL;
 }

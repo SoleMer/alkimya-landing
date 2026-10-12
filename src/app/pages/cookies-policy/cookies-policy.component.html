@@ -1,0 +1,126 @@
+<main class="relative overflow-hidden pb-20 pt-28 sm:pb-28 sm:pt-36">
+  <div class="pointer-events-none absolute -left-40 top-0 h-96 w-96 rounded-full bg-primary-500/15 blur-3xl" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <a routerLink="/"
+       class="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-graphite-300 transition-all duration-300 hover:-translate-x-0.5 hover:border-primary-400/60 hover:text-primary-300">
+      <span aria-hidden="true">←</span> Volver al inicio
+    </a>
+
+    <header class="mt-10 max-w-3xl">
+      <p class="font-display text-sm font-semibold uppercase tracking-[0.3em] text-accent-400">Legal · Sitio web</p>
+      <h1 class="mt-4 font-display text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+        Política de Cookies <span class="text-primary-300">- Alkimya Labs</span>
+      </h1>
+      <p class="mt-4 text-sm text-graphite-400">
+        Última actualización: <time datetime="2026-10">{{ lastUpdated }}</time>
+      </p>
+      <p class="mt-6 text-lg leading-relaxed text-graphite-300">
+        Esta política explica cómo el sitio web <strong class="text-graphite-100">alkimyalabs.com.ar</strong>, de Alkimya Labs,
+        utiliza cookies y tecnologías similares mientras lo navegás.
+      </p>
+      <div class="mt-6 rounded-2xl border border-primary-400/30 bg-primary-400/10 p-5">
+        <p class="text-graphite-100">
+          Esta política aplica solo a la navegación de este sitio web. El uso de GastON, nuestro asistente de finanzas por
+          WhatsApp, se rige por la
+          <a routerLink="/privacidad" class="text-accent-300 underline underline-offset-4 transition-all duration-300 hover:text-accent-400">Política de Privacidad de GastON</a>.
+        </p>
+      </div>
+    </header>
+
+    <article class="mt-14 max-w-3xl space-y-12 leading-relaxed text-graphite-300">
+      <section id="que-son">
+        <h2 class="font-display text-2xl font-bold text-white">1. ¿Qué son las cookies?</h2>
+        <p class="mt-4">
+          Las cookies son pequeños archivos de texto que un sitio web guarda en tu navegador. Permiten, por ejemplo,
+          reconocer que un mismo navegador volvió a visitar el sitio, sin necesidad de saber quién sos.
+        </p>
+      </section>
+
+      <section id="para-que">
+        <h2 class="font-display text-2xl font-bold text-white">2. ¿Para qué las usamos?</h2>
+        <p class="mt-4">
+          Usamos <strong class="text-graphite-100">Google Analytics</strong> únicamente para entender, de forma agregada,
+          cómo se usa el sitio y así mejorarlo. Con esta herramienta obtenemos información como:
+        </p>
+        <ul class="mt-4 list-disc space-y-2 pl-6 marker:text-accent-400">
+          <li>Cuántas personas visitan el sitio y qué páginas ven.</li>
+          <li>Desde dónde llegan (por ejemplo, Instagram, Google o un enlace directo).</li>
+          <li>Tipo de dispositivo, navegador y ubicación aproximada (país o ciudad).</li>
+          <li>Qué botones se usan, como los que llevan a hablar con GastON por WhatsApp.</li>
+        </ul>
+        <p class="mt-4">
+          Esta información es estadística: <strong class="text-graphite-100">no la usamos para identificarte</strong>,
+          no la vendemos y no la usamos con fines publicitarios. Google Analytics no registra ni almacena tu dirección IP.
+        </p>
+      </section>
+
+      <section id="cookies-utilizadas">
+        <h2 class="font-display text-2xl font-bold text-white">3. Cookies que utiliza este sitio</h2>
+        <div class="mt-6 overflow-x-auto rounded-2xl border border-white/10">
+          <table class="w-full min-w-[32rem] text-left text-sm">
+            <thead class="bg-white/5 font-display text-graphite-100">
+              <tr>
+                <th scope="col" class="px-4 py-3">Cookie</th>
+                <th scope="col" class="px-4 py-3">Proveedor</th>
+                <th scope="col" class="px-4 py-3">Finalidad</th>
+                <th scope="col" class="px-4 py-3">Duración</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/5">
+              @for (cookie of cookies; track cookie.name) {
+                <tr>
+                  <td class="whitespace-nowrap px-4 py-3 font-mono text-accent-300">{{ cookie.name }}</td>
+                  <td class="whitespace-nowrap px-4 py-3">{{ cookie.provider }}</td>
+                  <td class="px-4 py-3">{{ cookie.purpose }}</td>
+                  <td class="whitespace-nowrap px-4 py-3">{{ cookie.duration }}</td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4">
+          Además, cuando cerrás el aviso de cookies guardamos esa preferencia en el almacenamiento local de tu navegador,
+          solo para no volver a mostrártelo.
+        </p>
+      </section>
+
+      <section id="google">
+        <h2 class="font-display text-2xl font-bold text-white">4. Google como proveedor</h2>
+        <p class="mt-4">
+          Los datos que recoge Google Analytics son procesados por Google. Podés conocer cómo los utiliza en
+          <a href="https://policies.google.com/technologies/partner-sites?hl=es" target="_blank" rel="noopener noreferrer"
+             class="text-accent-300 underline underline-offset-4 transition-all duration-300 hover:text-accent-400">Cómo usa Google la información de los sitios que usan sus servicios</a>.
+        </p>
+      </section>
+
+      <section id="desactivar">
+        <h2 class="font-display text-2xl font-bold text-white">5. Cómo desactivarlas</h2>
+        <p class="mt-4">Podés impedir o eliminar estas cookies en cualquier momento:</p>
+        <ul class="mt-4 list-disc space-y-2 pl-6 marker:text-accent-400">
+          <li>Desde la configuración de privacidad de tu navegador, bloqueando o borrando las cookies de este sitio.</li>
+          <li>
+            Instalando el
+            <a href="https://tools.google.com/dlpage/gaoptout?hl=es" target="_blank" rel="noopener noreferrer"
+               class="text-accent-300 underline underline-offset-4 transition-all duration-300 hover:text-accent-400">complemento de inhabilitación de Google Analytics</a>.
+          </li>
+        </ul>
+        <p class="mt-4">Desactivarlas no afecta el funcionamiento del sitio.</p>
+      </section>
+
+      <section id="cambios">
+        <h2 class="font-display text-2xl font-bold text-white">6. Cambios en esta Política</h2>
+        <p class="mt-4">
+          Si sumamos nuevas herramientas o cambiamos el uso de las cookies, actualizaremos esta página y la fecha de
+          última actualización.
+        </p>
+      </section>
+
+      <section id="contacto">
+        <h2 class="font-display text-2xl font-bold text-white">7. Contacto</h2>
+        <p class="mt-4">Si tenés dudas sobre esta política, escribinos por correo electrónico.</p>
+        <app-contact-email subject="Consulta sobre cookies - Alkimya Labs" />
+      </section>
+    </article>
+  </div>
+</main>
