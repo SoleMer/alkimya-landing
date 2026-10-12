@@ -6,23 +6,35 @@ export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    title: 'Control de Gastos por WhatsApp, sin Planillas | GastON',
+    title: 'Alkimya Labs | Software con Alma y Alquimia Tecnológica',
     data: {
       seo: {
         path: '/',
         description:
-          'Registrá tus gastos mandando un mensaje de WhatsApp. GastON los ordena por categoría y te arma reportes, sin planillas de Excel ni apps. Creado por Alkimya Labs.',
+          'Laboratorio de software que crea herramientas inteligentes para liberar tu carga mental. Conocé GastON, tu control de gastos por WhatsApp, sin planillas ni apps.',
       } satisfies RouteSeo,
     },
   },
   {
-    path: 'privacidad',
+    path: 'gaston',
+    loadComponent: () => import('./pages/gaston/gaston.component').then((m) => m.GastonComponent),
+    title: 'Control de Gastos por WhatsApp, sin Planillas | GastON',
+    data: {
+      seo: {
+        path: '/gaston',
+        description:
+          'GastON usa IA para registrar tus gastos, cuotas y dólares con un mensaje de WhatsApp, y te avisa si te pasás del presupuesto. Sin apps ni planillas. 14 días gratis.',
+      } satisfies RouteSeo,
+    },
+  },
+  {
+    path: 'gaston/privacidad',
     loadComponent: () =>
       import('./pages/privacy-policy/privacy-policy.component').then((m) => m.PrivacyPolicyComponent),
     title: 'Política de Privacidad · GastON | Alkimya Labs',
     data: {
       seo: {
-        path: '/privacidad',
+        path: '/gaston/privacidad',
         description:
           'Cómo GastON, el asistente de gastos por WhatsApp de Alkimya Labs, recopila, usa y protege tus datos personales y financieros según la Ley 25.326.',
       } satisfies RouteSeo,
@@ -40,6 +52,11 @@ export const routes: Routes = [
           'Qué cookies usa el sitio web de Alkimya Labs, para qué sirven y cómo desactivarlas. Usamos Google Analytics solo con fines estadísticos.',
       } satisfies RouteSeo,
     },
+  },
+  // URL anterior de la política (ya enlazada desde el bot y compartida). En producción la redirige vercel.json con un 301.
+  {
+    path: 'privacidad',
+    redirectTo: 'gaston/privacidad',
   },
   {
     path: '**',

@@ -9,7 +9,7 @@ import { SITE_URL } from '../config/site.config';
 /** Datos SEO de una ruta: se declaran en `data.seo` de cada ruta en app.routes.ts. */
 export interface RouteSeo {
   description: string;
-  /** Path canónico, con "/" inicial (ej: "/privacidad"). */
+  /** Path canónico, con "/" inicial (ej: "/gaston/privacidad"). */
   path: string;
 }
 

@@ -5,7 +5,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 
 /** Botón de WhatsApp que se clickeó; permite comparar qué CTA convierte mejor en GA4. */
-export type WhatsAppCta = 'header' | 'header-mobile' | 'hero' | 'gaston';
+export type WhatsAppCta = 'header' | 'header-mobile' | 'hero' | 'gaston' | 'gaston-page-hero' | 'gaston-page-final';
 
 type Gtag = (command: 'event', name: string, params?: Record<string, unknown>) => void;
 

@@ -32,22 +32,22 @@ describe('AppComponent', () => {
     expect(page.querySelector('h1')?.textContent).toContain('Software con alma.');
   });
 
-  it('should render the privacy policy at /privacidad', async () => {
-    const page = await renderAt('/privacidad');
+  it('should render the privacy policy at /gaston/privacidad', async () => {
+    const page = await renderAt('/gaston/privacidad');
     expect(page.querySelector('h1')?.textContent).toContain('Política de Privacidad');
     expect(page.querySelectorAll('article section h2').length).toBe(8);
     expect(page.querySelector('a[href="/"]')?.textContent).toContain('Volver al inicio');
   });
 
   it('should update title, description and canonical per route', async () => {
-    await renderAt('/privacidad');
+    await renderAt('/gaston/privacidad');
     expect(document.title).toContain('Política de Privacidad');
     expect(document.querySelector('meta[name="description"]')?.getAttribute('content')).toContain('GastON');
-    expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://alkimyalabs.com.ar/privacidad');
-    expect(document.querySelector('meta[property="og:url"]')?.getAttribute('content')).toBe('https://alkimyalabs.com.ar/privacidad');
+    expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://alkimyalabs.com.ar/gaston/privacidad');
+    expect(document.querySelector('meta[property="og:url"]')?.getAttribute('content')).toBe('https://alkimyalabs.com.ar/gaston/privacidad');
 
     await renderAt('/');
-    expect(document.title).toBe('Control de Gastos por WhatsApp, sin Planillas | GastON');
+    expect(document.title).toBe('Alkimya Labs | Software con Alma y Alquimia Tecnológica');
     expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://alkimyalabs.com.ar/');
   });
 
@@ -57,14 +57,27 @@ describe('AppComponent', () => {
     try {
       await renderAt('/');
       await TestBed.inject(Router).navigate(['/'], { fragment: 'gaston' });
-      await TestBed.inject(Router).navigateByUrl('/privacidad');
+      await TestBed.inject(Router).navigateByUrl('/gaston/privacidad');
 
       const pageViews = gtag.mock.calls.filter(([, name]) => name === 'page_view');
-      expect(pageViews.map(([, , params]) => new URL(params.page_location).pathname)).toEqual(['/', '/privacidad']);
+      expect(pageViews.map(([, , params]) => new URL(params.page_location).pathname)).toEqual(['/', '/gaston/privacidad']);
       expect(pageViews[1][2].page_title).toContain('Política de Privacidad');
     } finally {
       delete (window as unknown as { gtag?: unknown }).gtag;
     }
+  });
+
+  it('should render the GastON page at /gaston, linked from the home GastON section', async () => {
+    const home = await renderAt('/');
+    expect(home.querySelector('#gaston a[href="/gaston"]')).toBeTruthy();
+
+    const page = await renderAt('/gaston');
+    expect(page.querySelector('h1')?.textContent).toContain('control de gastos');
+    expect(page.querySelectorAll('#funciones h3').length).toBe(8);
+    expect(page.querySelector('#inteligencia-artificial')?.textContent).toContain('te pasaste del 10% recomendado');
+    expect(page.querySelectorAll('#preguntas-frecuentes details').length).toBeGreaterThan(0);
+    expect(page.querySelector('a[href*="wa.me"]')).toBeNull();
+    expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://alkimyalabs.com.ar/gaston');
   });
 
   it('should render the cookies policy at /cookies, linked from the footer and the GastON privacy policy', async () => {
@@ -72,12 +85,12 @@ describe('AppComponent', () => {
     expect(page.querySelector('h1')?.textContent).toContain('Política de Cookies');
     expect(page.querySelector('footer a[href="/cookies"]')?.textContent).toContain('Política de Cookies');
 
-    const privacy = await renderAt('/privacidad');
+    const privacy = await renderAt('/gaston/privacidad');
     expect(privacy.querySelector('main a[href="/cookies"]')).toBeTruthy();
   });
 
   it('should offer contact by email (Gmail and mailto) in both policies, without WhatsApp links', async () => {
-    for (const url of ['/privacidad', '/cookies']) {
+    for (const url of ['/gaston/privacidad', '/cookies']) {
       const page = await renderAt(url);
       const contact = page.querySelector('#contacto')!;
       expect(contact.querySelector('a[href^="https://mail.google.com/mail/"][href*="to=alkimyalabs@gmail.com"]')).toBeTruthy();
@@ -104,6 +117,12 @@ describe('AppComponent', () => {
     }
   });
 
+  it('should redirect the old /privacidad URL to /gaston/privacidad', async () => {
+    const page = await renderAt('/privacidad');
+    expect(TestBed.inject(Router).url).toBe('/gaston/privacidad');
+    expect(page.querySelector('h1')?.textContent).toContain('Política de Privacidad');
+  });
+
   it('should redirect unknown paths to the landing', async () => {
     const page = await renderAt('/no-existe');
     expect(page.querySelector('h1')?.textContent).toContain('Software con alma.');
@@ -111,12 +130,12 @@ describe('AppComponent', () => {
 
   it('should link the privacy policy from the footer', async () => {
     const page = await renderAt('/');
-    const link = page.querySelector<HTMLAnchorElement>('footer a[href="/privacidad"]');
+    const link = page.querySelector<HTMLAnchorElement>('footer a[href="/gaston/privacidad"]');
     expect(link?.textContent).toContain('Política de Privacidad');
   });
 
   it('should open every external link in a new tab safely', async () => {
-    for (const url of ['/', '/privacidad', '/cookies']) {
+    for (const url of ['/', '/gaston', '/gaston/privacidad', '/cookies']) {
       const page = await renderAt(url);
       const external = Array.from(page.querySelectorAll<HTMLAnchorElement>('a[href^="http"]'));
       expect(external.length).toBeGreaterThan(0);

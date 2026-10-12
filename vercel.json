@@ -1,3 +1,4 @@
 {
+  "redirects": [{ "source": "/privacidad", "destination": "/gaston/privacidad", "permanent": true }],
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

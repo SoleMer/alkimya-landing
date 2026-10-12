@@ -12,20 +12,26 @@
         </h2>
 
         <p class="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-graphite-600 lg:mx-0">
-          El asistente inteligente de finanzas personales que vive en tu chat. Mandale mensajes de texto o notas de audio con tus gastos diarios y él procesa, categoriza y arma tus reportes al instante.
+          El asistente de finanzas personales con inteligencia artificial que vive en tu chat. Mandale un mensaje con tus gastos diarios: su IA los entiende, los categoriza, arma tus reportes y te avisa si te estás pasando del presupuesto.
         </p>
 
-        <!-- LANZAMIENTO: reemplazar el "Muy pronto" por el CTA de WhatsApp comentado abajo.
-        <a [href]="whatsappUrl" target="_blank" rel="noopener noreferrer"
-           (click)="analytics.trackWhatsAppClick('gaston')"
-           aria-label="Probar Gratis: GastON en WhatsApp (se abre en una pestaña nueva)"
-           class="mt-10 inline-flex w-full items-center justify-center rounded-full bg-accent-500 px-8 py-4 font-display text-base font-bold text-white shadow-xl shadow-accent-500/25 transition-all duration-300 hover:-translate-y-1 hover:bg-accent-600 hover:shadow-accent-500/40 sm:w-auto">
-          Probar Gratis
-        </a>
-        -->
-        <span class="mt-10 inline-flex w-full cursor-default items-center justify-center rounded-full border-2 border-accent-500 px-8 py-4 font-display text-base font-bold text-accent-600 sm:w-auto">
-          Muy pronto
-        </span>
+        <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
+          <!-- LANZAMIENTO: reemplazar el "Muy pronto" por el CTA de WhatsApp comentado abajo.
+          <a [href]="whatsappUrl" target="_blank" rel="noopener noreferrer"
+             (click)="analytics.trackWhatsAppClick('gaston')"
+             aria-label="Probar Gratis: GastON en WhatsApp (se abre en una pestaña nueva)"
+             class="inline-flex w-full items-center justify-center rounded-full bg-accent-500 px-8 py-4 font-display text-base font-bold text-white shadow-xl shadow-accent-500/25 transition-all duration-300 hover:-translate-y-1 hover:bg-accent-600 hover:shadow-accent-500/40 sm:w-auto">
+            Probar Gratis
+          </a>
+          -->
+          <span class="inline-flex w-full cursor-default items-center justify-center rounded-full border-2 border-accent-500 px-8 py-4 font-display text-base font-bold text-accent-600 sm:w-auto">
+            Muy pronto
+          </span>
+          <a routerLink="/gaston"
+             class="inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-4 font-display text-base font-bold text-primary-700 transition-all duration-300 hover:text-accent-600 sm:w-auto">
+            Conocer más sobre GastON <span aria-hidden="true">→</span>
+          </a>
+        </div>
       </div>
 
       <!-- Chat preview -->

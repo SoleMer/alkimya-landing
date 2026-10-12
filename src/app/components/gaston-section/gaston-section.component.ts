@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { AnalyticsService } from '../../analytics/analytics.service';
 import { WHATSAPP_URL } from '../../config/site.config';
 
@@ -15,6 +16,7 @@ interface ChatMessage {
 
 @Component({
   selector: 'app-gaston-section',
+  imports: [RouterLink],
   templateUrl: './gaston-section.component.html',
 })
 export class GastonSectionComponent {
