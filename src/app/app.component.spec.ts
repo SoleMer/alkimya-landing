@@ -85,7 +85,7 @@ describe('AppComponent', () => {
     expect(page.querySelectorAll('#funciones h3').length).toBe(8);
     expect(page.querySelector('#inteligencia-artificial')?.textContent).toContain('te pasaste del 10% recomendado');
     expect(page.querySelectorAll('#preguntas-frecuentes details').length).toBeGreaterThan(0);
-    expect(page.querySelector('a[href*="wa.me"]')).toBeNull();
+    expect(page.querySelectorAll(`a[href="${WHATSAPP_URL}"]`).length).toBeGreaterThanOrEqual(2);
     expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://alkimyalabs.com.ar/gaston');
   });
 
@@ -155,8 +155,7 @@ describe('AppComponent', () => {
     }
   });
 
-  // LANZAMIENTO: volver a `it` cuando se descomenten los CTAs de WhatsApp.
-  it.skip('should point the WhatsApp CTAs to the configured number', async () => {
+  it('should point the WhatsApp CTAs to the configured number', async () => {
     const page = await renderAt('/');
     expect(page.querySelectorAll(`a[href="${WHATSAPP_URL}"]`).length).toBeGreaterThanOrEqual(3);
   });
