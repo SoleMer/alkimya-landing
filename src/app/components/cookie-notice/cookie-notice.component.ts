@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, afterNextRender, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 /** Clave en localStorage que recuerda que el visitante cerró el aviso. */
@@ -14,7 +14,13 @@ export const COOKIE_NOTICE_STORAGE_KEY = 'alkimya-cookie-notice-dismissed';
   templateUrl: './cookie-notice.component.html',
 })
 export class CookieNoticeComponent {
-  protected readonly visible = signal(!this.wasDismissed());
+  // Arranca oculto y se decide en el navegador: al prerenderizar no hay localStorage, y así el HTML
+  // estático no trae un aviso que después desaparece para quien ya lo cerró.
+  protected readonly visible = signal(false);
+
+  constructor() {
+    afterNextRender(() => this.visible.set(!this.wasDismissed()));
+  }
 
   protected dismiss(): void {
     this.visible.set(false);

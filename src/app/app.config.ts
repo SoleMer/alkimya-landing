@@ -1,10 +1,13 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideRouter, withInMemoryScrolling, withRouterConfig } from '@angular/router';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
+    // Reusa el HTML prerenderizado en vez de volver a dibujar la página al cargar.
+    provideClientHydration(withEventReplay()),
     provideRouter(
       routes,
       // Arriba de todo al cambiar de página; scroll a la sección cuando la URL trae #fragmento.
