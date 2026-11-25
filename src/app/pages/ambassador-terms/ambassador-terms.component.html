@@ -1,0 +1,147 @@
+<main class="relative overflow-hidden pb-20 pt-28 sm:pb-28 sm:pt-36">
+  <div class="pointer-events-none absolute -left-40 top-0 h-96 w-96 rounded-full bg-primary-500/15 blur-3xl" aria-hidden="true"></div>
+
+  <div class="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <a routerLink="/gaston/embajadores"
+       class="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2 text-sm font-medium text-graphite-300 transition-all duration-300 hover:-translate-x-0.5 hover:border-primary-400/60 hover:text-primary-300">
+      <span aria-hidden="true">←</span> Volver a Embajadores
+    </a>
+
+    <header class="mt-10 max-w-3xl">
+      <p class="font-display text-sm font-semibold uppercase tracking-[0.3em] text-accent-400">Legal</p>
+      <h1 class="mt-4 font-display text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
+        Términos y Condiciones del Programa de Embajadores <span class="text-primary-300">- GastON</span>
+      </h1>
+      <p class="mt-4 text-sm text-graphite-400">
+        Última actualización: <time datetime="2026-11">{{ lastUpdated }}</time>
+      </p>
+      <p class="mt-6 text-lg leading-relaxed text-graphite-300">
+        Estas condiciones aplican solo a quienes participan del Programa de Embajadores y se suman a los
+        <a routerLink="/gaston/terminos" class="text-accent-300 underline underline-offset-4 transition-all duration-300 hover:text-accent-400">Términos y Condiciones de Uso de GastON</a>,
+        que siguen vigentes para el uso del Servicio.
+      </p>
+    </header>
+
+    <div class="mt-14 grid gap-12 lg:grid-cols-[16rem_1fr]">
+      <!-- Índice -->
+      <nav aria-label="Índice de los términos" class="lg:sticky lg:top-28 lg:self-start">
+        <p class="font-display text-sm font-bold text-white">Contenido</p>
+        <ol class="mt-4 space-y-1 border-l border-white/10 text-sm">
+          @for (section of sections; track section.id; let i = $index) {
+            <li>
+              <a routerLink="/gaston/embajadores/terminos" [fragment]="section.id"
+                 class="-ml-px block border-l border-transparent py-1.5 pl-4 text-graphite-400 transition-all duration-300 hover:border-accent-400 hover:text-accent-300">
+                {{ i + 1 }}. {{ section.title }}
+              </a>
+            </li>
+          }
+        </ol>
+      </nav>
+
+      <!-- Contenido -->
+      <article class="max-w-3xl space-y-12 leading-relaxed text-graphite-300">
+        <section id="objeto-y-aceptacion">
+          <h2 class="font-display text-2xl font-bold text-white">1. Objeto y Aceptación</h2>
+          <p class="mt-4">
+            Los presentes Términos y Condiciones regulan la participación en el Programa de Embajadores de AlkimyaLabs (en
+            adelante, la "Empresa"), titular del software GastON (en adelante, el "Software"). Al solicitar su ingreso o
+            utilizar su código promocional, el participante (en adelante, el "Embajador") acepta íntegramente estas condiciones.
+          </p>
+        </section>
+
+        <section id="elegibilidad">
+          <h2 class="font-display text-2xl font-bold text-white">2. Elegibilidad e Inscripción</h2>
+          <p class="mt-4">
+            Podrán participar personas físicas mayores de edad con capacidad legal para contratar o personas jurídicas
+            debidamente constituidas. La Empresa se reserva el derecho de aprobar, rechazar o revocar la solicitud de
+            cualquier Embajador a su entera discreción.
+          </p>
+        </section>
+
+        <section id="naturaleza-de-la-relacion">
+          <h2 class="font-display text-2xl font-bold text-white">3. Naturaleza de la Relación</h2>
+          <p class="mt-4">
+            La participación en el Programa no crea relación laboral, societaria, de agencia ni representación legal entre
+            las partes. El Embajador actúa como contratista independiente, asume sus propios gastos operativos y no tiene
+            facultad para obligar contractualmente a la Empresa ni modificar precios o condiciones comerciales del Software.
+          </p>
+        </section>
+
+        <section id="codigo-y-atribucion">
+          <h2 class="font-display text-2xl font-bold text-white">4. Código de Descuento y Atribución de Referidos</h2>
+          <ul class="mt-4 list-disc space-y-2 pl-6 marker:text-accent-400">
+            <li><strong class="text-graphite-100">Asignación:</strong> Una vez aprobado, el Embajador recibirá un código de descuento único para compartir con clientes potenciales.</li>
+            <li><strong class="text-graphite-100">Criterio de atribución:</strong> Una suscripción se considerará referida por el Embajador únicamente cuando un Cliente Nuevo introduzca el código de descuento del Embajador al momento de contratar y abonar su primera suscripción.</li>
+            <li><strong class="text-graphite-100">Cliente Nuevo:</strong> Se entiende por Cliente Nuevo toda persona física o jurídica que no haya tenido una cuenta paga previa, prueba gratuita activa ni negociación comercial abierta con la Empresa en los últimos 90 días.</li>
+            <li><strong class="text-graphite-100">Exclusiones:</strong> No generarán comisión los autorreferidos (cuentas creadas por el propio Embajador), ni las compras realizadas sin aplicar el código en el momento del alta.</li>
+          </ul>
+        </section>
+
+        <section id="comisiones">
+          <h2 class="font-display text-2xl font-bold text-white">5. Estructura de Comisiones</h2>
+          <p class="mt-4">
+            Por cada suscripción válida generada mediante su código de descuento, el Embajador devengará una comisión única
+            calculada sobre el importe neto efectivamente cobrado por la Empresa (descontado el descuento aplicado al cliente,
+            impuestos indirectos como IVA, tasas bancarias y comisiones de pasarelas de pago):
+          </p>
+          <ul class="mt-4 list-disc space-y-2 pl-6 marker:text-accent-400">
+            <li><strong class="text-graphite-100">Suscripción Mensual:</strong> El 45% del importe neto abonado correspondiente al primer mes de suscripción. No aplican comisiones sobre renovaciones mensuales posteriores.</li>
+            <li><strong class="text-graphite-100">Suscripción Anual:</strong> El 20% del importe neto abonado correspondiente al primer año completo de suscripción. No aplican comisiones sobre renovaciones anuales posteriores.</li>
+            <li><strong class="text-graphite-100">Cambios de plan:</strong> Si un cliente contrata un plan mensual y luego migra a un plan anual, únicamente se liquidará la comisión correspondiente a la contratación inicial (45% del primer mes), salvo acuerdo escrito en contrario.</li>
+          </ul>
+        </section>
+
+        <section id="validacion-y-pagos">
+          <h2 class="font-display text-2xl font-bold text-white">6. Validación, Reembolsos y Liquidación de Pagos</h2>
+          <ul class="mt-4 list-disc space-y-2 pl-6 marker:text-accent-400">
+            <li><strong class="text-graphite-100">Período de validación:</strong> Las comisiones quedarán sujetas a un período de verificación de 30 días corridos desde el cobro efectivo del cliente. Si dentro de ese plazo el cliente solicita reembolso, cancela o se produce un contracargo (chargeback), la comisión quedará anulada.</li>
+            <li><strong class="text-graphite-100">Retiro y medios de pago:</strong> Las comisiones validadas se liquidarán dentro de los primeros 10 días hábiles del mes siguiente, mediante transferencia bancaria.</li>
+          </ul>
+        </section>
+
+        <section id="promocion-y-marca">
+          <h2 class="font-display text-2xl font-bold text-white">7. Normas de Promoción y Uso de Marca</h2>
+          <ul class="mt-4 list-disc space-y-2 pl-6 marker:text-accent-400">
+            <li><strong class="text-graphite-100">Licencia limitada:</strong> La Empresa otorga al Embajador una licencia no exclusiva, revocable e intransferible para utilizar el nombre, logotipos y materiales promocionales oficiales del Software con el único fin de divulgar su código de descuento.</li>
+            <li><strong class="text-graphite-100">Publicación en sitios de cupones y anuncios pagos:</strong> Queda estrictamente prohibido publicar el código en agregadores masivos de cupones sin autorización previa, pujar por palabras clave con la marca GastON en buscadores o redes sociales o hacerse pasar por un canal oficial de la Empresa.</li>
+            <li><strong class="text-graphite-100">Veracidad y transparencia:</strong> El Embajador se compromete a comunicar las características y precios del Software de forma veraz y a identificar sus publicaciones como contenido promocional o de afiliado conforme a la ley vigente.</li>
+          </ul>
+        </section>
+
+        <section id="confidencialidad">
+          <h2 class="font-display text-2xl font-bold text-white">8. Confidencialidad y Protección de Datos</h2>
+          <p class="mt-4">
+            El Embajador mantendrá bajo estricta confidencialidad cualquier información técnica, comercial o métrica no
+            pública a la que acceda. Asimismo, se obliga a cumplir con la normativa de protección de datos personales
+            aplicable, absteniéndose de enviar comunicaciones no solicitadas (spam).
+          </p>
+        </section>
+
+        <section id="vigencia-y-terminacion">
+          <h2 class="font-display text-2xl font-bold text-white">9. Vigencia y Terminación</h2>
+          <p class="mt-4">
+            Cualquiera de las partes podrá dar por terminada su participación en el Programa en cualquier momento mediante
+            notificación por correo electrónico.
+          </p>
+          <p class="mt-4">
+            En caso de baja voluntaria sin incumplimiento, la Empresa liquidará las comisiones válidas generadas hasta la
+            fecha de terminación una vez superado el período de validación.
+          </p>
+          <p class="mt-4">
+            En caso de incumplimiento grave, fraude o abuso del código, la Empresa podrá suspender la cuenta de inmediato y
+            cancelar las comisiones pendientes de pago.
+          </p>
+        </section>
+
+        <section id="modificaciones-y-jurisdiccion">
+          <h2 class="font-display text-2xl font-bold text-white">10. Modificaciones y Jurisdicción</h2>
+          <p class="mt-4">
+            La Empresa podrá actualizar estos Términos y Condiciones notificando a los Embajadores con al menos 15 días de
+            antelación; las modificaciones no afectarán comisiones ya devengadas con anterioridad. Este acuerdo se regirá por
+            las leyes de Argentina, sometiéndose las partes a los tribunales ordinarios de Tandil.
+          </p>
+        </section>
+      </article>
+    </div>
+  </div>
+</main>

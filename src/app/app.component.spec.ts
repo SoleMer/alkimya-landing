@@ -48,6 +48,18 @@ describe('AppComponent', () => {
     expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://alkimyalabs.com.ar/gaston/terminos');
   });
 
+  it('should render the ambassador terms at /gaston/embajadores/terminos, linked from the ambassadors page and footer', async () => {
+    const ambassadors = await renderAt('/gaston/embajadores');
+    expect(ambassadors.querySelector('main a[href="/gaston/embajadores/terminos"]')).toBeTruthy();
+
+    const page = await renderAt('/gaston/embajadores/terminos');
+    expect(page.querySelector('h1')?.textContent).toContain('Programa de Embajadores');
+    expect(page.querySelectorAll('article section h2').length).toBe(10);
+    expect(page.querySelector('main a[href="/gaston/terminos"]')).toBeTruthy();
+    expect(page.querySelector('footer a[href="/gaston/embajadores/terminos"]')?.textContent).toContain('Términos de Embajadores');
+    expect(document.querySelector('link[rel="canonical"]')?.getAttribute('href')).toBe('https://alkimyalabs.com.ar/gaston/embajadores/terminos');
+  });
+
   it('should update title, description and canonical per route', async () => {
     await renderAt('/gaston/privacidad');
     expect(document.title).toContain('Política de Privacidad');

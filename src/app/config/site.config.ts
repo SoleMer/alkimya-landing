@@ -11,6 +11,23 @@ export const WHATSAPP_MESSAGE = 'Hola GastON!';
 
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
+/** Mensaje que inicia la inscripción al programa de embajadores en el bot (lo detecta AmbassadorSignupRegex). */
+export const AMBASSADOR_WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Quiero ser embajador')}`;
+
+/**
+ * Condiciones del programa de embajadores. Tienen que coincidir con el bot (GastONWebhook):
+ * PaymentService (PRICE_MONTHLY / PRICE_ANNUAL) y AmbassadorService (AMBASSADOR_DISCOUNT y los porcentajes).
+ * Si cambian allá, actualizarlas acá.
+ */
+export const AMBASSADOR_PROGRAM = {
+  monthlyPrice: 3500,
+  annualPrice: 35000,
+  /** Descuento por cuota del plan mensual durante 12 meses; en el plan anual se descuenta 10 veces este monto. */
+  discount: 300,
+  monthlyCommissionPercent: 45,
+  annualCommissionPercent: 20,
+} as const;
+
 export const CONTACT_EMAIL = 'alkimyalabs@gmail.com';
 
 export const SOCIAL_LINKS = {
@@ -54,6 +71,7 @@ export const LEGAL_LINK_GROUPS: LegalLinkGroup[] = [
     links: [
       { label: 'Términos y Condiciones', path: '/gaston/terminos' },
       { label: 'Política de Privacidad', path: '/gaston/privacidad' },
+      { label: 'Términos de Embajadores', path: '/gaston/embajadores/terminos' },
     ],
   },
 ];

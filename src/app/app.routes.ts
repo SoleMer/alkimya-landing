@@ -28,6 +28,31 @@ export const routes: Routes = [
     },
   },
   {
+    path: 'gaston/embajadores',
+    loadComponent: () => import('./pages/ambassadors/ambassadors.component').then((m) => m.AmbassadorsComponent),
+    title: 'Ser Embajador de GastON: Ganá Plata Recomendando | GastON',
+    data: {
+      seo: {
+        path: '/gaston/embajadores',
+        description:
+          'Sumate al programa de embajadores de GastON: compartí tu código, tus amigos pagan menos y vos ganás una parte de cada suscripción. Te pagamos todos los meses.',
+      } satisfies RouteSeo,
+    },
+  },
+  {
+    path: 'gaston/embajadores/terminos',
+    loadComponent: () =>
+      import('./pages/ambassador-terms/ambassador-terms.component').then((m) => m.AmbassadorTermsComponent),
+    title: 'Términos del Programa de Embajadores · GastON | Alkimya Labs',
+    data: {
+      seo: {
+        path: '/gaston/embajadores/terminos',
+        description:
+          'Términos y condiciones del programa de embajadores de GastON: código de descuento, comisiones, validación y pago, y normas de promoción.',
+      } satisfies RouteSeo,
+    },
+  },
+  {
     path: 'gaston/privacidad',
     loadComponent: () =>
       import('./pages/privacy-policy/privacy-policy.component').then((m) => m.PrivacyPolicyComponent),
